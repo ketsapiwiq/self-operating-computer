@@ -559,7 +559,7 @@ def call_ollama(model, messages):
         print(f"[call_ollama] model {model}")
     time.sleep(1)
     try:
-        model = config.initialize_ollama()
+        ollama_model = config.initialize_ollama()
         screenshots_dir = "screenshots"
         if not os.path.exists(screenshots_dir):
             os.makedirs(screenshots_dir)
@@ -586,7 +586,7 @@ def call_ollama(model, messages):
         }
         messages.append(vision_message)
 
-        response = ollama.chat(
+        response = ollama_model.chat(
             model=model,
             messages=messages,
         )
